@@ -1,0 +1,23 @@
+---
+import ExperienceItem from './ExperienceItem.astro';
+import SectionHeader from './SectionHeader.astro';
+import type { ExperienceEntry } from '../../data/portfolio';
+
+type Props = {
+  entries: ExperienceEntry[];
+};
+
+const { entries } = Astro.props;
+---
+
+<section class="py-20 sm:py-24" id="experience" aria-labelledby="experience-title">
+  <SectionHeader
+    eyebrow="Experience"
+    title="Work shaped around useful systems."
+    titleId="experience-title"
+    description="A concise record of products, platforms, and data-heavy tools built for organizations with real operational needs."
+  />
+  <div>
+    {entries.map((entry) => <ExperienceItem entry={entry} />)}
+  </div>
+</section>

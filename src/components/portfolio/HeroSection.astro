@@ -1,0 +1,70 @@
+---
+import BadgeList from './BadgeList.astro';
+import InfoRow from './InfoRow.astro';
+import type { ContactEntry } from '../../data/portfolio';
+
+type Props = {
+  profile: {
+    name: string;
+    eyebrow: string;
+    role: string;
+    location: string;
+    availability: string;
+    summary: string;
+    current: {
+      title: string;
+      organization: string;
+      period: string;
+    };
+  };
+  techStack: string[];
+  primaryContact: ContactEntry;
+};
+
+const { profile, techStack, primaryContact } = Astro.props;
+const [firstName, ...remainingName] = profile.name.split(' ');
+const lastName = remainingName.join(' ');
+---
+
+<section class="min-h-screen py-24 sm:py-28 lg:flex lg:items-center lg:py-32" aria-labelledby="hero-title">
+  <div class="grid w-full gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:items-center lg:gap-20">
+    <div class="max-w-3xl">
+      <p class="mb-7 font-mono text-sm uppercase tracking-[0.28em] text-(--color-muted)">
+        {profile.eyebrow}
+      </p>
+      <h1 id="hero-title" class="text-6xl font-light leading-[0.95] text-(--color-text) sm:text-7xl lg:text-8xl">
+        <span class="sr-only">{profile.name}</span>
+        <span aria-hidden="true" class="block">{firstName}</span>
+        <span aria-hidden="true" class="block text-(--color-muted-strong)">{lastName}</span>
+      </h1>
+      <p class="mt-8 max-w-2xl text-xl leading-9 text-(--color-muted) sm:text-2xl sm:leading-10">
+        {profile.summary}
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-(--color-muted) sm:text-base">
+        <span class="inline-flex items-center gap-3">
+          <span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+          {profile.availability}
+        </span>
+        <span>{profile.location}</span>
+        <a href={primaryContact.href} class="text-(--color-muted) transition duration-100 hover:underline hover:text-white">
+          {primaryContact.value}
+        </a>
+      </div>
+    </div>
+
+    <aside class="grid gap-8 border-t border-white/10 pt-8 lg:border-t-0 lg:pt-0">
+      <InfoRow
+        label="Currently"
+        value={profile.current.title}
+        detail={`${profile.current.organization} / ${profile.current.period}`}
+      />
+      <InfoRow label="Focus" value={profile.role} detail="Backend systems, data tools, and full-stack products" />
+      <div class="space-y-4">
+        <p class="font-mono text-xs uppercase tracking-[0.22em] text-(--color-muted)">
+          Stack
+        </p>
+        <BadgeList items={techStack} />
+      </div>
+    </aside>
+  </div>
+</section>

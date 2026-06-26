@@ -1,0 +1,23 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import SectionHeader from './SectionHeader.astro';
+import type { ProjectEntry } from '../../data/portfolio';
+
+type Props = {
+  projects: ProjectEntry[];
+};
+
+const { projects } = Astro.props;
+---
+
+<section class="py-20 sm:py-24" id="projects" aria-labelledby="projects-title">
+  <SectionHeader
+    eyebrow="Projects"
+    title="Selected builds."
+    titleId="projects-title"
+    description="Small but focused projects across backend architecture, cloud deployment, IoT, mobile dashboards, and product workflows."
+  />
+  <div class="grid gap-4 md:grid-cols-2">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+</section>

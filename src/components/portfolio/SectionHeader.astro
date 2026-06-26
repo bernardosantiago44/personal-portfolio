@@ -1,0 +1,26 @@
+---
+type Props = {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  titleId?: string;
+};
+
+const { eyebrow, title, description, titleId } = Astro.props;
+---
+
+<header class="mb-8 max-w-2xl sm:mb-10">
+  <p class="mb-3 font-mono text-xs uppercase tracking-[0.24em] text-(--color-muted)">
+    {eyebrow}
+  </p>
+  <h2 id={titleId} class="text-3xl font-medium leading-tight text-(--color-text) sm:text-4xl">
+    {title}
+  </h2>
+  {
+    description && (
+      <p class="mt-4 max-w-xl text-base leading-7 text-(--color-muted) sm:text-lg">
+        {description}
+      </p>
+    )
+  }
+</header>

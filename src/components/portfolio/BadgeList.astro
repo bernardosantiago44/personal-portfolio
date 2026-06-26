@@ -1,0 +1,25 @@
+---
+type Props = {
+  items: string[];
+  variant?: 'compact' | 'default';
+};
+
+const { items, variant = 'default' } = Astro.props;
+const spacingClass = variant === 'compact' ? 'gap-2' : 'gap-2.5';
+const badgeClass =
+  variant === 'compact'
+    ? 'px-3 py-1 text-xs'
+    : 'px-3.5 py-1.5 text-sm';
+---
+
+<ul class={`flex flex-wrap ${spacingClass}`} aria-label="Technology stack">
+  {
+    items.map((item) => (
+      <li
+        class={`rounded-full border border-white/10 bg-white/[0.03] ${badgeClass} leading-none text-[var(--color-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]`}
+      >
+        {item}
+      </li>
+    ))
+  }
+</ul>

@@ -1,0 +1,25 @@
+---
+import ContactLink from './ContactLink.astro';
+import SectionHeader from './SectionHeader.astro';
+import type { ContactEntry } from '../../data/portfolio';
+
+type Props = {
+  contact: ContactEntry[];
+};
+
+const { contact } = Astro.props;
+---
+
+<section class="pb-28 pt-20 sm:pb-32 sm:pt-24" id="contact" aria-labelledby="contact-title">
+  <div class="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(20rem,1fr)] lg:gap-16">
+    <SectionHeader
+      eyebrow="Contact"
+      title="Let us build something clear and reliable."
+      titleId="contact-title"
+      description="Reach out for backend, full-stack, data tooling, or collaboration opportunities."
+    />
+    <div>
+      {contact.map((item) => <ContactLink item={item} />)}
+    </div>
+  </div>
+</section>
