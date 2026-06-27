@@ -1,0 +1,18 @@
+---
+type Props = {
+	title: string;
+	eyebrow?: string;
+};
+
+const { title, eyebrow } = Astro.props;
+---
+
+<section class="project-section grid gap-6 border-b border-white/10 py-12 sm:py-14 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-14">
+	<header>
+		{eyebrow && <p class="mb-3 font-mono text-xs uppercase tracking-[0.22em] text-(--color-muted)">{eyebrow}</p>}
+		<h2 class="text-2xl font-medium leading-tight text-(--color-text) sm:text-3xl">{title}</h2>
+	</header>
+	<div class="project-section-body">
+		<slot />
+	</div>
+</section>

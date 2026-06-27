@@ -1,0 +1,25 @@
+---
+type ResultItem = {
+	value: string;
+	label: string;
+	description?: string;
+};
+
+type Props = {
+	items: ResultItem[];
+};
+
+const { items } = Astro.props;
+---
+
+<div class="grid gap-3 sm:grid-cols-3">
+	{
+		items.map((item) => (
+			<div class="rounded-lg border border-white/10 bg-white/2.5 p-5">
+				<p class="text-3xl font-light leading-none text-(--color-text)">{item.value}</p>
+				<h3 class="mt-4 text-base font-medium text-(--color-text)">{item.label}</h3>
+				{item.description && <p class="mt-2 text-sm leading-6 text-(--color-muted)">{item.description}</p>}
+			</div>
+		))
+	}
+</div>

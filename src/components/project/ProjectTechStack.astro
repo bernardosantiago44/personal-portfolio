@@ -1,0 +1,27 @@
+---
+import BadgeList from '../portfolio/BadgeList.astro';
+
+type StackGroup = {
+	label: string;
+	items: string[];
+};
+
+type Props = {
+	groups: StackGroup[];
+};
+
+const { groups } = Astro.props;
+---
+
+<div class="grid gap-5 sm:grid-cols-2">
+	{
+		groups.map((group) => (
+			<div class="rounded-lg border border-white/10 bg-white/2.5 p-5">
+				<h3 class="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-(--color-muted)">
+					{group.label}
+				</h3>
+				<BadgeList items={group.items} variant="compact" />
+			</div>
+		))
+	}
+</div>

@@ -1,0 +1,101 @@
+---
+import Layout from './Layout.astro';
+import BadgeList from '../components/portfolio/BadgeList.astro';
+
+type ProjectRepository = {
+	label?: string;
+	href: string;
+};
+
+type ProjectFrontmatter = {
+	title: string;
+	description: string;
+	period?: string;
+	role?: string;
+	technologies?: string[];
+	repository?: ProjectRepository;
+};
+
+type Props = {
+	frontmatter: ProjectFrontmatter;
+};
+
+const { frontmatter } = Astro.props;
+const pageTitle = `${frontmatter.title} | Bernardo Santiago Marin`;
+const repositoryLabel = frontmatter.repository?.label ?? 'Repository';
+---
+
+<Layout title={pageTitle} description={frontmatter.description}>
+	<main class="mx-auto w-full max-w-(--layout-max-width) px-5 sm:px-8 lg:px-10">
+		<nav class="pt-8 sm:pt-10" aria-label="Project navigation">
+			<a
+				href="/#projects"
+				class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-(--color-muted) transition duration-150 hover:text-(--color-text)"
+			>
+				<span aria-hidden="true">&lt;-</span>
+				Projects
+			</a>
+		</nav>
+
+		<article class="project-detail pb-24 sm:pb-28">
+			<header class="grid gap-10 border-b border-white/10 py-16 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:gap-16">
+				<div class="max-w-3xl">
+					<p class="mb-6 font-mono text-xs uppercase tracking-[0.24em] text-(--color-muted)">
+						{frontmatter.period ?? 'Project'}
+					</p>
+					<h1 class="text-5xl font-extralight leading-none text-(--color-text) sm:text-6xl lg:text-7xl">
+						{frontmatter.title}
+					</h1>
+					<p class="mt-7 max-w-2xl text-xl leading-9 text-(--color-muted) sm:text-2xl sm:leading-10">
+						{frontmatter.description}
+					</p>
+				</div>
+
+				<aside class="grid content-start gap-7 border-t border-white/10 pt-8 lg:border-t-0 lg:pt-0">
+					{
+						frontmatter.role && (
+							<div class="space-y-2">
+								<p class="font-mono text-xs uppercase tracking-[0.22em] text-(--color-muted)">
+									Role
+								</p>
+								<p class="text-lg text-(--color-text)">{frontmatter.role}</p>
+							</div>
+						)
+					}
+					{
+						frontmatter.technologies?.length && (
+							<div class="space-y-4">
+								<p class="font-mono text-xs uppercase tracking-[0.22em] text-(--color-muted)">
+									Stack
+								</p>
+								<BadgeList items={frontmatter.technologies} />
+							</div>
+						)
+					}
+					{
+						frontmatter.repository && (
+							<a
+								href={frontmatter.repository.href}
+								class="group inline-flex w-fit items-center gap-3 border-t border-white/10 pt-5 text-base text-(--color-text) transition duration-150 hover:border-white/25"
+								target="_blank"
+								rel="noreferrer"
+							>
+								{repositoryLabel}
+								<span
+									aria-hidden="true"
+									class="text-(--color-muted) transition duration-150 group-hover:translate-x-1 group-hover:text-(--color-text)"
+								>
+									-&gt;
+								</span>
+							</a>
+						)
+					}
+				</aside>
+			</header>
+
+			<div class="project-content">
+				<slot />
+			</div>
+		</article>
+	</main>
+</Layout>

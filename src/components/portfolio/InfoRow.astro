@@ -9,11 +9,11 @@ const { label, value, detail } = Astro.props;
 ---
 
 <div class="space-y-2">
-  <p class="font-mono text-xs uppercase tracking-[0.22em] text-[var(--color-muted)]">
+  <p class="font-mono text-xs uppercase tracking-[0.22em] text-(--color-muted)">
     {label}
   </p>
   <div>
-    <p class="text-base font-medium text-[var(--color-text)] sm:text-lg">{value}</p>
-    {detail && <p class="mt-1 text-sm text-[var(--color-muted)]">{detail}</p>}
+    <p class="text-base font-medium text-(--color-text) sm:text-lg">{value}</p>
+    {detail && <p class="mt-1 text-sm text-(--color-muted)">{detail}</p>}
   </div>
 </div>

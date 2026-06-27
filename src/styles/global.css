@@ -2,11 +2,11 @@
 
 :root {
   color-scheme: dark;
-  --color-background: #050505;
+  --color-background: #121212;
   --color-background-soft: #0b0b0b;
   --color-text: #f4f4f0;
-  --color-muted: #8d8d88;
-  --color-muted-strong: #6f6f6a;
+  --color-muted: #bebebb;
+  --color-muted-strong: #b4b4b1;
   --color-border: rgba(255, 255, 255, 0.1);
   --layout-max-width: 72rem;
   --fade-size: 6rem;
@@ -23,7 +23,6 @@
 
 html {
   min-width: 320px;
-  min-height: 100%;
   min-height: 100dvh;
   background: var(--color-background);
   scroll-behavior: smooth;
@@ -31,7 +30,6 @@ html {
 
 body {
   min-height: 100%;
-  min-height: 100dvh;
   margin: 0;
   overflow-x: hidden;
   background: var(--color-background);
@@ -92,6 +90,67 @@ select {
 :focus-visible {
   outline: 2px solid var(--color-text);
   outline-offset: 4px;
+}
+
+.project-content {
+  color: var(--color-muted);
+}
+
+.project-section-body {
+  max-width: 48rem;
+}
+
+.project-section-body > * + * {
+  margin-top: 1rem;
+}
+
+.project-section-body p {
+  font-size: large;
+  line-height: 1.8;
+}
+.project-section-body li {
+  line-height: 1.8;
+}
+
+.project-section-body strong {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.project-section-body a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: rgba(244, 244, 240, 0.35);
+  text-underline-offset: 0.25em;
+  transition:
+    color 150ms ease,
+    text-decoration-color 150ms ease;
+}
+
+.project-section-body a:hover {
+  text-decoration-color: var(--color-text);
+}
+
+.project-section-body ul,
+.project-section-body ol {
+  padding-left: 1.25rem;
+}
+
+.project-section-body ul {
+  list-style-type: none;
+}
+
+.project-section-body ol {
+  list-style: decimal;
+}
+
+.project-section-body code {
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.125rem 0.35rem;
+  color: var(--color-text);
+  font-size: 0.9em;
 }
 
 @media (max-width: 640px) {

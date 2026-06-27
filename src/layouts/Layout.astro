@@ -1,9 +1,16 @@
 ---
 import '../styles/global.css';
 
-const title = 'Bernardo Santiago Marin | Portfolio';
-const description =
+type Props = {
+	title?: string;
+	description?: string;
+};
+
+const defaultTitle = 'Bernardo Santiago Marin | Portfolio';
+const defaultDescription =
 	'Portfolio of Bernardo Santiago Marin, a backend developer and computer science student building reliable backend systems, data tools, and full-stack products.';
+
+const { title = defaultTitle, description = defaultDescription } = Astro.props;
 ---
 
 <!doctype html>

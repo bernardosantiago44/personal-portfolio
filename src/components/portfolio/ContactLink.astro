@@ -13,16 +13,16 @@ const { item } = Astro.props;
   class="group flex items-center justify-between gap-4 border-t border-white/10 py-5 transition duration-200 hover:border-white/25"
 >
   <span>
-    <span class="block font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-muted)]">
+    <span class="block font-mono text-xs uppercase tracking-[0.2em] text-(--color-muted)">
       {item.label}
     </span>
-    <span class="mt-2 block break-words text-base text-[var(--color-text)] sm:text-lg">
+    <span class="mt-2 block wrap-break-word text-base text-(--color-text) sm:text-lg">
       {item.value}
     </span>
   </span>
   <span
     aria-hidden="true"
-    class="shrink-0 text-lg text-[var(--color-muted)] transition duration-200 group-hover:translate-x-1 group-hover:text-[var(--color-text)]"
+    class="shrink-0 text-lg text-(--color-muted) transition duration-200 group-hover:translate-x-1 group-hover:text-(--color-text)"
   >
     -&gt;
   </span>

@@ -8,7 +8,7 @@ import { contact, experience, profile, projects, techStack } from '../data/portf
 ---
 
 <Layout>
-	<main class="mx-auto w-full max-w-[var(--layout-max-width)] px-5 sm:px-8 lg:px-10">
+	<main class="mx-auto w-full max-w-(--layout-max-width) px-5 sm:px-8 lg:px-10">
 		<HeroSection profile={profile} techStack={techStack} primaryContact={contact[0]} />
 		<ExperienceSection entries={experience} />
 		<ProjectsSection projects={projects} />

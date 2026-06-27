@@ -86,6 +86,7 @@ export const projects: ProjectEntry[] = [
     description:
       'Full-stack task manager with a Java REST API, React frontend, Telegram bot interface, and Oracle Cloud deployment for active team collaboration.',
     technologies: ['Spring Boot', 'React', 'Oracle Autonomous Database', 'Docker', 'Telegram API'],
+    href: '/projects/talos-task-manager',
   },
   {
     name: 'Object Detection System',
@@ -93,6 +94,7 @@ export const projects: ProjectEntry[] = [
     description:
       'IoT-powered truck prototype with stop sign detection, obstacle avoidance, real-time image recognition, and an iOS dashboard for live telemetry.',
     technologies: ['Raspberry Pi', 'OpenCV', 'SwiftUI', 'Firebase', 'IoT'],
+    href: '/projects/object-detection-system',
   },
 ];
 
