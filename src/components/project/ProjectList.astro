@@ -14,7 +14,7 @@ const { items } = Astro.props;
 <div class="grid gap-3">
 	{
 		items.map((item) => (
-			<article class="rounded-lg border border-white/10 bg-white/2.5 p-5">
+			<article class="rounded-lg border border-(--color-border) bg-(--color-surface) p-5">
 				<h3 class="text-base font-medium text-(--color-text)">{item.title}</h3>
 				<p class="mt-2 text-base leading-7 text-(--color-muted)">{item.description}</p>
 			</article>

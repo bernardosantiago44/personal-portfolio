@@ -1,4 +1,5 @@
 ---
+import ThemeToggle from '../components/ThemeToggle.astro';
 import '../styles/global.css';
 
 type Props = {
@@ -22,6 +23,41 @@ const { title = defaultTitle, description = defaultDescription } = Astro.props;
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="description" content={description} />
 		<meta name="theme-color" content="#050505" />
+		<script is:inline>
+			(() => {
+				const storageKey = 'portfolio-theme';
+				const themeColors = {
+					dark: '#121212',
+					light: '#f7f5ef',
+				};
+
+				const getPreferredTheme = () => {
+					try {
+						const savedTheme = window.localStorage.getItem(storageKey);
+
+						if (savedTheme === 'light' || savedTheme === 'dark') {
+							return savedTheme;
+						}
+					} catch {
+						// localStorage can be unavailable in restricted browsing contexts.
+					}
+
+					return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+				};
+
+				const theme = getPreferredTheme();
+				const themeColor = themeColors[theme];
+
+				document.documentElement.dataset.theme = theme;
+				document.documentElement.style.colorScheme = theme;
+
+				const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+				if (themeColorMeta) {
+					themeColorMeta.setAttribute('content', themeColor);
+				}
+			})();
+		</script>
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
@@ -32,5 +68,6 @@ const { title = defaultTitle, description = defaultDescription } = Astro.props;
 		<div class="scroll-fade scroll-fade-top" aria-hidden="true"></div>
 		<div class="scroll-fade scroll-fade-bottom" aria-hidden="true"></div>
 		<slot />
+		<ThemeToggle />
 	</body>
 </html>

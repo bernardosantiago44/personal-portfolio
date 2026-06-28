@@ -38,7 +38,7 @@ const repositoryLabel = frontmatter.repository?.label ?? 'Repository';
 		</nav>
 
 		<article class="project-detail pb-24 sm:pb-28">
-			<header class="grid gap-10 border-b border-white/10 py-16 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:gap-16">
+			<header class="grid gap-10 border-b border-(--color-border) py-16 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:gap-16">
 				<div class="max-w-3xl">
 					<p class="mb-6 font-mono text-xs uppercase tracking-[0.24em] text-(--color-muted)">
 						{frontmatter.period ?? 'Project'}
@@ -51,7 +51,7 @@ const repositoryLabel = frontmatter.repository?.label ?? 'Repository';
 					</p>
 				</div>
 
-				<aside class="grid content-start gap-7 border-t border-white/10 pt-8 lg:border-t-0 lg:pt-0">
+				<aside class="grid content-start gap-7 border-t border-(--color-border) pt-8 lg:border-t-0 lg:pt-0">
 					{
 						frontmatter.role && (
 							<div class="space-y-2">
@@ -76,7 +76,7 @@ const repositoryLabel = frontmatter.repository?.label ?? 'Repository';
 						frontmatter.repository && (
 							<a
 								href={frontmatter.repository.href}
-								class="group inline-flex w-fit items-center gap-3 border-t border-white/10 pt-5 text-base text-(--color-text) transition duration-150 hover:border-white/25"
+								class="group inline-flex w-fit items-center gap-3 border-t border-(--color-border) pt-5 text-base text-(--color-text) transition duration-150 hover:border-(--color-border-strong)"
 								target="_blank"
 								rel="noreferrer"
 							>
