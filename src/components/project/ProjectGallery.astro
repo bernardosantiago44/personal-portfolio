@@ -1,8 +1,10 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from "astro";
 type GalleryItem = {
 	title: string;
 	description?: string;
-	image?: string;
+	image?: ImageMetadata;
 	alt?: string;
 };
 
@@ -24,12 +26,12 @@ const { items } = Astro.props;
 								type="button"
 								class="group block w-full cursor-zoom-in text-left focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-(--color-text)"
 								data-gallery-preview-trigger
-								data-gallery-preview-src={item.image}
+								data-gallery-preview-src={item.image.src}
 								data-gallery-preview-alt={item.alt ?? item.title}
 								data-gallery-preview-title={item.title}
 								aria-label={`Preview full-size image: ${item.alt ?? item.title}`}
 							>
-								<img
+								<Image
 									src={item.image}
 									alt={item.alt ?? item.title}
 									class="aspect-4/3 w-full object-cover transition duration-200 group-hover:scale-[1.02]"

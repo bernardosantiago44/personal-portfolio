@@ -11,10 +11,17 @@ export default function setupGalleriesInteractivity() {
             return;
         }
 
-        const closePreview = () => {
-            dialog.close();
+        const clearPreview = () => {
             previewImage.removeAttribute('src');
             previewImage.alt = '';
+        };
+
+        const closePreview = () => {
+            if (dialog.open) {
+                dialog.close();
+            }
+
+            clearPreview();
         };
 
         triggers.forEach((trigger) => {
@@ -42,9 +49,6 @@ export default function setupGalleriesInteractivity() {
             }
         });
 
-        dialog.addEventListener('close', () => {
-            previewImage.removeAttribute('src');
-            previewImage.alt = '';
-        });
+        dialog.addEventListener('close', clearPreview);
     });
 }
