@@ -17,6 +17,11 @@ import ProjectList from '../../components/project/ProjectList.astro';
 import ProjectResults from '../../components/project/ProjectResults.astro';
 import ProjectSection from '../../components/project/ProjectSection.astro';
 import ProjectTechStack from '../../components/project/ProjectTechStack.astro';
+// Images
+import ApplicationArchitecture from '../../assets/talos/ApplicationArchitecture.webp'
+import EntityRelationshipModel from '../../assets/talos/EntityRelationshipModel.webp'
+import PipelineArchitecture from '../../assets/talos/PipelineArchitecture.webp'
+import TelegramScreenshots from '../../assets/talos/TelegramScreenshots.webp'
 
 export const architectureItems = [
   {
@@ -112,22 +117,22 @@ export const galleryItems = [
   {
     title: 'CI/CD',
     description: 'Main deployment pipeline for uninterrupted updates delivery.',
-    image: '../../src/assets/talos/PipelineArchitecture.webp',
+    image: PipelineArchitecture,
   },
   {
     title: 'Telegram flow',
     description: 'Chat-based task updates and reminders for fast team interaction.',
-    image: '../../src/assets/talos/TelegramScreenshots.webp',
+    image: TelegramScreenshots
   },
   {
     title: 'Application Architecture',
     description: 'Carefully designed scalable architecture.',
-    image: '../../src/assets/talos/ApplicationArchitecture.webp',
+    image: ApplicationArchitecture
   },
   {
     title: 'Entity Relationship Model',
     description: '3NF normalized relational model.',
-    image: '../../src/assets/talos/EntityRelationshipModel.webp',
+    image: EntityRelationshipModel
   },
 ];
 
