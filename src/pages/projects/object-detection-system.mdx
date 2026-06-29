@@ -1,0 +1,130 @@
+---
+layout: ../../layouts/ProjectLayout.astro
+title: Object Detection System
+description: An IoT truck prototype with stop sign detection, obstacle avoidance, image recognition, and an iOS telemetry dashboard.
+period: Aug. 2024 - Dec. 2024
+role: Mobile and computer vision developer
+technologies:
+  - Raspberry Pi
+  - OpenCV
+  - SwiftUI
+  - Firebase
+  - IoT
+---
+
+import ProjectList from '../../components/project/ProjectList.astro';
+import ProjectResults from '../../components/project/ProjectResults.astro';
+import ProjectSection from '../../components/project/ProjectSection.astro';
+import ProjectTechStack from '../../components/project/ProjectTechStack.astro';
+
+export const architectureItems = [
+  {
+    title: 'Raspberry Pi control layer',
+    description:
+      'The prototype runs camera capture, detection logic, and hardware signals close to the vehicle so safety reactions do not depend on the dashboard.',
+  },
+  {
+    title: 'Computer vision pipeline',
+    description:
+      'OpenCV processes frames to identify stop signs and relevant obstacles in real time for autonomous driving behavior.',
+  },
+  {
+    title: 'iOS telemetry dashboard',
+    description:
+      'SwiftUI presents vehicle state, detection feedback, and live telemetry in a compact mobile dashboard connected through Firebase.',
+  },
+];
+
+export const decisionItems = [
+  {
+    title: 'Run detection on-device',
+    description:
+      'Keeping recognition near the camera reduced latency and made the prototype more resilient when network conditions changed.',
+  },
+  {
+    title: 'Separate telemetry from movement control',
+    description:
+      'The mobile app observes and visualizes state, while the Raspberry Pi keeps direct responsibility for vehicle behavior.',
+  },
+  {
+    title: 'Use Firebase for fast synchronization',
+    description:
+      'Firebase provided a practical path for moving prototype telemetry into the dashboard without building custom realtime infrastructure.',
+  },
+];
+
+export const challengeItems = [
+  {
+    title: 'Balancing detection accuracy and frame rate',
+    description:
+      'Image processing had to remain responsive on constrained hardware while still detecting signs and obstacles reliably.',
+  },
+  {
+    title: 'Designing clear telemetry',
+    description:
+      'The dashboard needed to surface only the signals that helped test and debug the prototype during runs.',
+  },
+];
+
+export const stackGroups = [
+  {
+    label: 'Hardware',
+    items: ['Raspberry Pi', 'Camera module', 'Vehicle prototype'],
+  },
+  {
+    label: 'Vision',
+    items: ['OpenCV', 'Frame processing', 'Object detection'],
+  },
+  {
+    label: 'Mobile',
+    items: ['SwiftUI', 'iOS dashboard', 'Live telemetry'],
+  },
+  {
+    label: 'Data',
+    items: ['Firebase', 'Realtime updates', 'Prototype state'],
+  },
+];
+
+export const resultItems = [
+  {
+    value: 'Real time',
+    label: 'Detection loop',
+    description: 'The prototype reacted to visual input while the vehicle was running.',
+  },
+  {
+    value: 'iOS',
+    label: 'Telemetry dashboard',
+    description: 'A mobile interface made testing and debugging easier during prototype sessions.',
+  },
+  {
+    value: 'IoT',
+    label: 'Integrated system',
+    description: 'Hardware, vision, cloud data, and mobile UI worked as one prototype.',
+  },
+];
+
+<ProjectSection title="Problem" eyebrow="01">
+  The project explored how a small vehicle prototype could understand its surroundings and expose
+  useful runtime feedback. The main objective was to combine object detection, movement behavior,
+  and mobile telemetry into a system that could be tested as a single product.
+</ProjectSection>
+
+<ProjectSection title="Architecture" eyebrow="02">
+  <ProjectList items={architectureItems} />
+</ProjectSection>
+
+<ProjectSection title="Important decisions" eyebrow="03">
+  <ProjectList items={decisionItems} />
+</ProjectSection>
+
+<ProjectSection title="Challenges" eyebrow="04">
+  <ProjectList items={challengeItems} />
+</ProjectSection>
+
+<ProjectSection title="Tech stack" eyebrow="05">
+  <ProjectTechStack groups={stackGroups} />
+</ProjectSection>
+
+<ProjectSection title="Results" eyebrow="06">
+  <ProjectResults items={resultItems} />
+</ProjectSection>

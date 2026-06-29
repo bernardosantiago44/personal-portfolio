@@ -1,0 +1,83 @@
+---
+type GalleryItem = {
+	title: string;
+	description?: string;
+	image?: string;
+	alt?: string;
+};
+
+type Props = {
+	items: GalleryItem[];
+};
+
+const { items } = Astro.props;
+---
+
+<div data-project-gallery>
+	<div class="grid gap-4 sm:grid-cols-2">
+		{
+			items.map((item) => (
+				<figure class="overflow-hidden rounded-lg border border-(--color-border) bg-(--color-surface)">
+					{
+						item.image ? (
+							<button
+								type="button"
+								class="group block w-full cursor-zoom-in text-left focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-(--color-text)"
+								data-gallery-preview-trigger
+								data-gallery-preview-src={item.image}
+								data-gallery-preview-alt={item.alt ?? item.title}
+								data-gallery-preview-title={item.title}
+								aria-label={`Preview full-size image: ${item.alt ?? item.title}`}
+							>
+								<img
+									src={item.image}
+									alt={item.alt ?? item.title}
+									class="aspect-4/3 w-full object-cover transition duration-200 group-hover:scale-[1.02]"
+									loading="lazy"
+								/>
+							</button>
+						) : (
+							<div class="project-gallery-placeholder flex aspect-4/3 items-end border-b border-(--color-border) p-5">
+								<span class="font-mono text-xs uppercase tracking-[0.22em] text-(--color-muted)">
+									{item.title}
+								</span>
+							</div>
+						)
+					}
+					<figcaption class="p-5">
+						<h3 class="text-base font-medium text-(--color-text)">{item.title}</h3>
+						{item.description && <p class="mt-2 text-sm leading-6 text-(--color-muted)">{item.description}</p>}
+					</figcaption>
+				</figure>
+			))
+		}
+	</div>
+
+	<dialog
+		class="project-gallery-preview m-auto w-[min(calc(100vw-2rem),72rem)] max-w-none rounded-lg border border-(--color-border) bg-(--color-surface) p-0 text-(--color-text) shadow-2xl backdrop:bg-black/75"
+		data-gallery-preview-dialog
+		aria-label="Image preview"
+	>
+		<div class="relative">
+			<button
+				type="button"
+				class="absolute right-3 top-3 z-10 grid size-10 place-items-center rounded-full border border-white/20 bg-black/70 text-2xl leading-none text-white transition hover:bg-black focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-white"
+				data-gallery-preview-close
+				aria-label="Close image preview"
+			>
+				&times;
+			</button>
+			<img
+				alt=""
+				class="max-h-[86vh] w-full rounded-lg object-contain"
+				data-gallery-preview-image
+			/>
+			<p class="sr-only" data-gallery-preview-title></p>
+		</div>
+	</dialog>
+</div>
+
+<script>
+	import setupGalleriesInteractivity from "../../scripts/ProjectGalleryInteraction";
+	setupGalleriesInteractivity()
+</script>

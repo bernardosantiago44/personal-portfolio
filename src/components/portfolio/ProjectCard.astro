@@ -13,29 +13,29 @@ const { project } = Astro.props;
   project.href ? (
     <a
       href={project.href}
-      class="group flex min-h-[19rem] flex-col justify-between rounded-lg border border-white/10 bg-white/[0.025] p-6 transition duration-200 hover:border-white/25 hover:bg-white/[0.045] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:p-7"
+      class="group flex min-h-76 flex-col justify-between rounded-lg border border-(--color-border) bg-(--color-surface) p-6 transition duration-200 hover:border-(--color-border-strong) hover:bg-(--color-surface-hover) focus-visible:outline focus-visible:outline-offset-4 focus-visible:outline-(--color-focus) sm:p-7"
     >
       <div class="space-y-3">
         {project.period && (
-          <p class="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-muted)]">
+          <p class="font-mono text-xs uppercase tracking-[0.18em] text-(--color-muted)">
             {project.period}
           </p>
         )}
-        <h3 class="text-xl font-medium text-[var(--color-text)]">{project.name}</h3>
-        <p class="text-base leading-7 text-[var(--color-muted)]">{project.description}</p>
+        <h3 class="text-xl font-medium text-(--color-text)">{project.name}</h3>
+        <p class="text-base leading-7 text-(--color-muted)">{project.description}</p>
       </div>
       <BadgeList items={project.technologies} variant="compact" />
     </a>
   ) : (
-    <article class="flex min-h-[19rem] flex-col justify-between rounded-lg border border-white/10 bg-white/[0.025] p-6 sm:p-7">
+    <article class="flex min-h-76 flex-col justify-between rounded-lg border border-(--color-border) bg-(--color-surface) p-6 sm:p-7">
       <div class="space-y-3">
         {project.period && (
-          <p class="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-muted)]">
+          <p class="font-mono text-xs uppercase tracking-[0.18em] text-(--color-muted)">
             {project.period}
           </p>
         )}
-        <h3 class="text-xl font-medium text-[var(--color-text)]">{project.name}</h3>
-        <p class="text-base leading-7 text-[var(--color-muted)]">{project.description}</p>
+        <h3 class="text-xl font-medium text-(--color-text)">{project.name}</h3>
+        <p class="text-base leading-7 text-(--color-muted)">{project.description}</p>
       </div>
       <BadgeList items={project.technologies} variant="compact" />
     </article>

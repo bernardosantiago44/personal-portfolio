@@ -1,0 +1,58 @@
+
+<button
+	type="button"
+	class="theme-toggle"
+	aria-label="Switch color theme"
+	aria-pressed="false"
+	data-theme-toggle
+>
+	<span class="theme-toggle__icon theme-toggle__icon--light" aria-hidden="true"></span>
+	<span class="theme-toggle__icon theme-toggle__icon--dark" aria-hidden="true"></span>
+</button>
+
+<script>
+	const storageKey = 'portfolio-theme';
+	const themeColors = {
+		dark: '#121212',
+		light: '#f7f5ef',
+	};
+
+	const getCurrentTheme = () => {
+		return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+	};
+
+	const setTheme = (theme: 'light' | 'dark', shouldPersist = true) => {
+		document.documentElement.dataset.theme = theme;
+		document.documentElement.style.colorScheme = theme;
+
+		const themeColorMeta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+		themeColorMeta?.setAttribute('content', themeColors[theme]);
+
+		if (shouldPersist) {
+			try {
+				window.localStorage.setItem(storageKey, theme);
+			} catch {
+				// Keep the visual theme change even when persistence is unavailable.
+			}
+		}
+
+		for (const themeToggle of document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]')) {
+			const nextTheme = theme === 'dark' ? 'light' : 'dark';
+			themeToggle.setAttribute('aria-label', `Switch to ${nextTheme} theme`);
+			themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
+		}
+	};
+
+	const initializeThemeToggle = () => {
+		setTheme(getCurrentTheme(), false);
+
+		for (const themeToggle of document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]')) {
+			themeToggle.addEventListener('click', () => {
+				const nextTheme = getCurrentTheme() === 'dark' ? 'light' : 'dark';
+				setTheme(nextTheme);
+			});
+		}
+	};
+
+	initializeThemeToggle();
+</script>

@@ -1,0 +1,162 @@
+---
+layout: ../../layouts/ProjectLayout.astro
+title: Talos Task Manager
+description: A full-stack task manager built around a Java API, React workspace, Telegram bot, and cloud deployment for active team collaboration.
+period: Feb. 2026 - Jun. 2026
+role: Backend developer
+technologies:
+  - Spring Boot
+  - React
+  - Oracle Autonomous Database
+  - Docker
+  - Telegram API
+---
+
+import ProjectGallery from '../../components/project/ProjectGallery.astro';
+import ProjectList from '../../components/project/ProjectList.astro';
+import ProjectResults from '../../components/project/ProjectResults.astro';
+import ProjectSection from '../../components/project/ProjectSection.astro';
+import ProjectTechStack from '../../components/project/ProjectTechStack.astro';
+
+export const architectureItems = [
+  {
+    title: 'API first backend',
+    description:
+      'Spring Boot exposes the core task, user, and collaboration flows through REST endpoints that can support both the web client and the Telegram interface.',
+  },
+  {
+    title: 'React workspace',
+    description:
+      'The frontend keeps task planning, filtering, and team context in a focused interface designed for day-to-day project tracking.',
+  },
+  {
+    title: 'Cloud deployment path',
+    description:
+      'Docker packages the services consistently, while Oracle Autonomous Database stores the relational project and task data.',
+  },
+  {
+    title: 'Monolith layered architecture',
+    description: 'Single deployable application with clear separation of concerns for easy development and deployment.',
+  },
+];
+
+export const decisionItems = [
+  {
+    title: 'Keep collaboration channels lightweight',
+    description:
+      'Telegram is used as a fast interaction layer for reminders and updates instead of forcing every action through the main web app.',
+  },
+  {
+    title: 'Use a relational model for work tracking',
+    description:
+      'Tasks, users, status changes, and team assignments are structured as durable records so future reporting and audit features remain possible.',
+  },
+  {
+    title: 'Separate product workflows from integrations',
+    description:
+      'The bot integration sits outside the core task rules, which keeps the product logic easier to test and extend.',
+  },
+];
+
+export const challengeItems = [
+  {
+    title: 'Keeping bot commands predictable',
+    description:
+      'The command design needed to be short enough for chat while still mapping cleanly to task states and project context.',
+  },
+  {
+    title: 'Coordinating multiple clients',
+    description:
+      'The API has to protect consistency when tasks are updated from both the browser and Telegram.',
+  },
+];
+
+export const stackGroups = [
+  {
+    label: 'Backend',
+    items: ['Spring Boot', 'Java', 'REST APIs', 'Oracle Autonomous Database'],
+  },
+  {
+    label: 'Frontend',
+    items: ['React', 'TypeScript', 'Responsive UI'],
+  },
+  {
+    label: 'Operations',
+    items: ['Docker', 'Oracle Cloud', 'Environment configuration'],
+  },
+  {
+    label: 'Integrations',
+    items: ['Telegram API', 'Bot commands', 'Notifications'],
+  },
+];
+
+export const resultItems = [
+  {
+    value: 'Design',
+    label: 'User interfaces',
+    description: 'A web workspace and Telegram bot both connect to the same product workflow.',
+  },
+  {
+    value: 'Backend',
+    label: 'Shared API',
+    description: 'One backend owns the task rules and keeps clients consistent.',
+  },
+  {
+    value: 'Cloud',
+    label: 'Deployment ready',
+    description: 'The app is structured for repeatable container-based deployment.',
+  },
+];
+
+export const galleryItems = [
+  {
+    title: 'CI/CD',
+    description: 'Main deployment pipeline for uninterrupted updates delivery.',
+    image: '../../src/assets/talos/PipelineArchitecture.webp',
+  },
+  {
+    title: 'Telegram flow',
+    description: 'Chat-based task updates and reminders for fast team interaction.',
+    image: '../../src/assets/talos/TelegramScreenshots.webp',
+  },
+  {
+    title: 'Application Architecture',
+    description: 'Carefully designed scalable architecture.',
+    image: '../../src/assets/talos/ApplicationArchitecture.webp',
+  },
+  {
+    title: 'Entity Relationship Model',
+    description: '3NF normalized relational model.',
+    image: '../../src/assets/talos/EntityRelationshipModel.webp',
+  },
+];
+
+<ProjectSection title="Problem" eyebrow="01">
+  Teams need a simple way to **track responsibilities** without losing context across tools. The goal
+  was to create a **task system** that can work in a focused web interface while still supporting **quick
+  updates** from the communication channel where people already spend time.
+</ProjectSection>
+
+<ProjectSection title="Architecture" eyebrow="02">
+  <ProjectList items={architectureItems} />
+</ProjectSection>
+
+<ProjectSection title="Important decisions" eyebrow="03">
+  <ProjectList items={decisionItems} />
+</ProjectSection>
+
+<ProjectSection title="Challenges" eyebrow="04">
+  <ProjectList items={challengeItems} />
+</ProjectSection>
+
+<ProjectSection title="Tech stack" eyebrow="05">
+  <ProjectTechStack groups={stackGroups} />
+</ProjectSection>
+
+<ProjectSection title="Results" eyebrow="06">
+  <ProjectResults items={resultItems} />
+</ProjectSection>
+
+<ProjectSection title="Gallery" eyebrow="07">
+  <ProjectGallery items={galleryItems} />
+</ProjectSection>
