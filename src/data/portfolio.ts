@@ -57,7 +57,7 @@ export const experience: ExperienceEntry[] = [
     location: 'Zapopan, Jalisco',
     description:
       'Building RESTful APIs and scalable backend services for enterprise clients across telecom, BPM, and logistics, with a focus on robust error handling and fast database access.',
-    technologies: ['.NET 10', 'REST APIs', 'SQL', 'Caching', 'WhatsApp Integrations'],
+    technologies: ['.NET 10', 'REST APIs', 'SQL', 'C#', 'Business Process Management'],
   },
   {
     period: 'Sep. 2025 - Dec. 2025',
@@ -66,7 +66,7 @@ export const experience: ExperienceEntry[] = [
     location: 'Zapopan, Jalisco',
     description:
       'Transformed survey data into a normalized PostgreSQL database and built a React mobile experience for analytical insights and interactive visualizations.',
-    technologies: ['React', 'PostgreSQL', 'Data Visualization', 'Mobile UI'],
+    technologies: ['React Native', 'PostgreSQL', 'Power Query', 'Mobile UI'],
   },
   {
     period: 'Feb. 2025 - May 2025',
@@ -75,14 +75,14 @@ export const experience: ExperienceEntry[] = [
     location: 'Zapopan, Jalisco',
     description:
       'Migrated manual workflows into a secure web platform with authentication, role-based access control, and a scalable SQL database for school operations.',
-    technologies: ['Web Platform', 'Authentication', 'RBAC', 'SQL'],
+    technologies: ['React', 'Authentication', 'RBAC', 'SQL'],
   },
 ];
 
 export const projects: ProjectEntry[] = [
   {
     name: 'Talos Task Manager',
-    period: 'Feb. 2026 - Present',
+    period: 'Feb. 2026 - Jun. 2026',
     description:
       'Full-stack task manager with a Java REST API, React frontend, Telegram bot interface, and Oracle Cloud deployment for active team collaboration.',
     technologies: ['Spring Boot', 'React', 'Oracle Autonomous Database', 'Docker', 'Telegram API'],
@@ -95,6 +95,12 @@ export const projects: ProjectEntry[] = [
       'IoT-powered truck prototype with stop sign detection, obstacle avoidance, real-time image recognition, and an iOS dashboard for live telemetry.',
     technologies: ['Raspberry Pi', 'OpenCV', 'SwiftUI', 'Firebase', 'IoT'],
     href: '/projects/object-detection-system',
+  },
+  {
+    name: 'Crypto Alerts',
+    period: 'Jun. 2026',
+    description: 'Web-based crypto portfolio management tool with personalized notification events via Telegram and email.',
+    technologies: ['React', 'Prisma', 'NestJS', 'Node Cron', 'Open API', 'CI/CD']
   },
 ];
 

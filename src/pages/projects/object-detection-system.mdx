@@ -12,7 +12,6 @@ technologies:
   - IoT
 ---
 
-import ProjectGallery from '../../components/project/ProjectGallery.astro';
 import ProjectList from '../../components/project/ProjectList.astro';
 import ProjectResults from '../../components/project/ProjectResults.astro';
 import ProjectSection from '../../components/project/ProjectSection.astro';
@@ -104,17 +103,6 @@ export const resultItems = [
   },
 ];
 
-export const galleryItems = [
-  {
-    title: 'Vehicle prototype',
-    description: 'Truck hardware setup with camera capture and onboard processing.',
-  },
-  {
-    title: 'Telemetry dashboard',
-    description: 'Mobile dashboard for observing detection and vehicle state.',
-  },
-];
-
 <ProjectSection title="Problem" eyebrow="01">
   The project explored how a small vehicle prototype could understand its surroundings and expose
   useful runtime feedback. The main objective was to combine object detection, movement behavior,
@@ -139,8 +127,4 @@ export const galleryItems = [
 
 <ProjectSection title="Results" eyebrow="06">
   <ProjectResults items={resultItems} />
-</ProjectSection>
-
-<ProjectSection title="Gallery" eyebrow="07">
-  <ProjectGallery items={galleryItems} />
 </ProjectSection>

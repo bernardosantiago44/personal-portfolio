@@ -2,8 +2,8 @@
 layout: ../../layouts/ProjectLayout.astro
 title: Talos Task Manager
 description: A full-stack task manager built around a Java API, React workspace, Telegram bot, and cloud deployment for active team collaboration.
-period: Feb. 2026 - Present
-role: Full-stack developer
+period: Feb. 2026 - Jun. 2026
+role: Backend developer
 technologies:
   - Spring Boot
   - React
@@ -33,6 +33,10 @@ export const architectureItems = [
     title: 'Cloud deployment path',
     description:
       'Docker packages the services consistently, while Oracle Autonomous Database stores the relational project and task data.',
+  },
+  {
+    title: 'Monolith layered architecture',
+    description: 'Single deployable application with clear separation of concerns for easy development and deployment.',
   },
 ];
 
@@ -107,12 +111,23 @@ export const resultItems = [
 export const galleryItems = [
   {
     title: 'CI/CD',
-    description: 'Main deployment pipeline for uninterrupted continuous delivery of updates.',
-    image: '../src/assets/TalosPipelineArchitecture.webp'
+    description: 'Main deployment pipeline for uninterrupted updates delivery.',
+    image: '../../src/assets/talos/PipelineArchitecture.webp',
   },
   {
     title: 'Telegram flow',
     description: 'Chat-based task updates and reminders for fast team interaction.',
+    image: '../../src/assets/talos/TelegramScreenshots.webp',
+  },
+  {
+    title: 'Application Architecture',
+    description: 'Carefully designed scalable architecture.',
+    image: '../../src/assets/talos/ApplicationArchitecture.webp',
+  },
+  {
+    title: 'Entity Relationship Model',
+    description: '3NF normalized relational model.',
+    image: '../../src/assets/talos/EntityRelationshipModel.webp',
   },
 ];
 
