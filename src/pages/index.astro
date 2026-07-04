@@ -4,7 +4,14 @@ import ContactSection from '../components/portfolio/ContactSection.astro';
 import ExperienceSection from '../components/portfolio/ExperienceSection.astro';
 import HeroSection from '../components/portfolio/HeroSection.astro';
 import ProjectsSection from '../components/portfolio/ProjectsSection.astro';
+import ScrollSpy, { type ScrollSpySection } from '../components/ScrollSpy.astro';
 import { contact, experience, profile, projects, techStack } from '../data/portfolio';
+
+const scrollSpySections: ScrollSpySection[] = [
+	{ id: 'experience', label: 'Experience' },
+	{ id: 'projects', label: 'Projects' },
+	{ id: 'contact', label: 'Contact' },
+];
 ---
 
 <Layout>
@@ -14,4 +21,5 @@ import { contact, experience, profile, projects, techStack } from '../data/portf
 		<ProjectsSection projects={projects} />
 		<ContactSection contact={contact} />
 	</main>
+	<ScrollSpy sections={scrollSpySections} ariaLabel="Portfolio sections" />
 </Layout>

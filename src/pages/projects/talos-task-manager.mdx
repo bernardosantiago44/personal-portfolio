@@ -17,6 +17,7 @@ import ProjectList from '../../components/project/ProjectList.astro';
 import ProjectResults from '../../components/project/ProjectResults.astro';
 import ProjectSection from '../../components/project/ProjectSection.astro';
 import ProjectTechStack from '../../components/project/ProjectTechStack.astro';
+import ScrollSpy from '../../components/ScrollSpy.astro';
 // Images
 import ApplicationArchitecture from '../../assets/talos/ApplicationArchitecture.webp'
 import EntityRelationshipModel from '../../assets/talos/EntityRelationshipModel.webp'
@@ -136,32 +137,44 @@ export const galleryItems = [
   },
 ];
 
-<ProjectSection title="Problem" eyebrow="01">
+export const scrollSpySections = [
+  { id: 'problem', label: 'Problem' },
+  { id: 'architecture', label: 'Architecture' },
+  { id: 'decisions', label: 'Important Decisions' },
+  { id: 'challenges', label: 'Challenges' },
+  { id: 'tech-stack', label: 'Tech Stack' },
+  { id: 'results', label: 'Results' },
+  { id: 'gallery', label: 'Gallery' },
+];
+
+<ScrollSpy sections={scrollSpySections} ariaLabel="Project sections" />
+
+<ProjectSection id={scrollSpySections[0].id} title="Problem" eyebrow="01">
   Teams need a simple way to **track responsibilities** without losing context across tools. The goal
   was to create a **task system** that can work in a focused web interface while still supporting **quick
   updates** from the communication channel where people already spend time.
 </ProjectSection>
 
-<ProjectSection title="Architecture" eyebrow="02">
+<ProjectSection id={scrollSpySections[1].id} title="Architecture" eyebrow="02">
   <ProjectList items={architectureItems} />
 </ProjectSection>
 
-<ProjectSection title="Important decisions" eyebrow="03">
+<ProjectSection id={scrollSpySections[2].id} title="Important decisions" eyebrow="03">
   <ProjectList items={decisionItems} />
 </ProjectSection>
 
-<ProjectSection title="Challenges" eyebrow="04">
+<ProjectSection id={scrollSpySections[3].id} title="Challenges" eyebrow="04">
   <ProjectList items={challengeItems} />
 </ProjectSection>
 
-<ProjectSection title="Tech stack" eyebrow="05">
+<ProjectSection id={scrollSpySections[4].id} title="Tech stack" eyebrow="05">
   <ProjectTechStack groups={stackGroups} />
 </ProjectSection>
 
-<ProjectSection title="Results" eyebrow="06">
+<ProjectSection id={scrollSpySections[5].id} title="Results" eyebrow="06">
   <ProjectResults items={resultItems} />
 </ProjectSection>
 
-<ProjectSection title="Gallery" eyebrow="07">
+<ProjectSection id={scrollSpySections[6].id} title="Gallery" eyebrow="07">
   <ProjectGallery items={galleryItems} />
 </ProjectSection>

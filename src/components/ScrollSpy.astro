@@ -1,0 +1,187 @@
+---
+export type ScrollSpySection = {
+	id: string;
+	label: string;
+};
+
+type Props = {
+	sections: ScrollSpySection[];
+	ariaLabel?: string;
+};
+
+const { sections, ariaLabel = 'Page sections' } = Astro.props;
+const serializedSections = JSON.stringify(sections);
+---
+
+{
+	sections.length > 0 && (
+		<nav class="scrollspy" aria-label={ariaLabel} data-scrollspy data-sections={serializedSections}>
+			<ol class="scrollspy__list">
+				{
+					sections.map((section) => (
+						<li>
+							<a class="scrollspy__link" href={`#${section.id}`} data-scrollspy-link={section.id}>
+								<span class="scrollspy__marker" aria-hidden="true" />
+								<span class="scrollspy__label">{section.label}</span>
+							</a>
+						</li>
+					))
+				}
+			</ol>
+		</nav>
+	)
+}
+
+<script>
+	type ScrollSpySection = {
+		id: string;
+		label: string;
+	};
+
+	const getSections = (scrollspy: HTMLElement) => {
+		try {
+			return JSON.parse(scrollspy.dataset.sections ?? '[]') as ScrollSpySection[];
+		} catch {
+			return [];
+		}
+	};
+
+	const getTrackedElements = (sections: ScrollSpySection[]) => {
+		return sections
+			.map((section) => document.getElementById(section.id))
+			.filter((sectionElement): sectionElement is HTMLElement => Boolean(sectionElement));
+	};
+
+	const getActiveSectionId = (sectionElements: HTMLElement[]) => {
+		const viewportGuidePosition = window.innerHeight * 0.42;
+		const currentSection = sectionElements.find((sectionElement) => {
+			const sectionBounds = sectionElement.getBoundingClientRect();
+			return sectionBounds.top <= viewportGuidePosition && sectionBounds.bottom > viewportGuidePosition;
+		});
+
+		if (currentSection) {
+			return currentSection.id;
+		}
+
+		const finalSection = sectionElements.at(-1);
+		const isPageBottomVisible =
+			window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+
+		return isPageBottomVisible ? finalSection?.id : undefined;
+	};
+
+	const setActiveLink = (scrollspy: HTMLElement, activeSectionId?: string) => {
+		for (const link of scrollspy.querySelectorAll<HTMLAnchorElement>('[data-scrollspy-link]')) {
+			const isActive = link.dataset.scrollspyLink === activeSectionId;
+
+			link.classList.toggle('is-active', isActive);
+
+			if (isActive) {
+				link.setAttribute('aria-current', 'location');
+			} else {
+				link.removeAttribute('aria-current');
+			}
+		}
+	};
+
+	const initializeScrollSpy = (scrollspy: HTMLElement) => {
+		const sections = getSections(scrollspy);
+		const sectionElements = getTrackedElements(sections);
+
+		if (sectionElements.length === 0) {
+			return;
+		}
+
+		let animationFrameId = 0;
+
+		const updateActiveSection = () => {
+			cancelAnimationFrame(animationFrameId);
+			animationFrameId = window.requestAnimationFrame(() => {
+				setActiveLink(scrollspy, getActiveSectionId(sectionElements));
+			});
+		};
+
+		updateActiveSection();
+		window.addEventListener('scroll', updateActiveSection, { passive: true });
+		window.addEventListener('resize', updateActiveSection);
+	};
+
+	for (const scrollspy of document.querySelectorAll<HTMLElement>('[data-scrollspy]')) {
+		initializeScrollSpy(scrollspy);
+	}
+</script>
+
+<style>
+	.scrollspy {
+		position: fixed;
+		top: 50%;
+		right: max(1.25rem, calc((100vw - var(--layout-max-width)) / 2 - 10rem));
+		z-index: 90;
+		display: none;
+		transform: translateY(-50%);
+	}
+
+	.scrollspy__list {
+		display: grid;
+		gap: 0.35rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.scrollspy__link {
+		display: grid;
+		grid-template-columns: 1.2rem minmax(4.5rem, max-content);
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0.35rem 0;
+		color: var(--color-muted);
+		font-size: 0.75rem;
+		line-height: 1;
+		text-decoration: none;
+		transition:
+			color 150ms ease,
+			transform 150ms ease;
+	}
+
+	.scrollspy__link:hover,
+	.scrollspy__link.is-active {
+		color: var(--color-text);
+	}
+
+	.scrollspy__link:hover {
+		transform: translateX(-0.125rem);
+	}
+
+	.scrollspy__marker {
+		justify-self: end;
+		width: 0.4rem;
+		height: 0.4rem;
+		border: 1px solid currentColor;
+		border-radius: 999px;
+		opacity: 0.55;
+		transition:
+			width 150ms ease,
+			background 150ms ease,
+			opacity 150ms ease;
+	}
+
+	.scrollspy__link.is-active .scrollspy__marker {
+		width: 1.1rem;
+		background: currentColor;
+		opacity: 1;
+	}
+
+	.scrollspy__label {
+		font-family:
+			Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+			sans-serif;
+		white-space: nowrap;
+	}
+
+	@media (min-width: 88rem) {
+		.scrollspy {
+			display: block;
+		}
+	}
+</style>
