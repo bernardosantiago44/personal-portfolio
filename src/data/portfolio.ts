@@ -19,6 +19,7 @@ export type Project = {
 
 export type ProjectDetails = {
   role?: string;
+  repository?: ProjectRepository;
   architectureItems: ProjectListItem[];
   importantDecisions: ProjectListItem[];
   challenges: ProjectListItem[];
@@ -29,6 +30,11 @@ export type ProjectDetails = {
 export type ContactEntry = {
   label: string;
   value: string;
+  href: string;
+};
+
+export type ProjectRepository = {
+  label?: string;
   href: string;
 };
 

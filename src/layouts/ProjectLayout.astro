@@ -1,19 +1,10 @@
 ---
 import Layout from './Layout.astro';
 import BadgeList from '../components/portfolio/BadgeList.astro';
-
-type ProjectRepository = {
-	label?: string;
-	href: string;
-};
+import { getProject, getProjectDetails } from '../data/portfolio';
 
 type ProjectFrontmatter = {
-	title: string;
-	description: string;
-	period?: string;
-	role?: string;
-	technologies?: string[];
-	repository?: ProjectRepository;
+	projectId: string;
 };
 
 type Props = {
@@ -21,11 +12,13 @@ type Props = {
 };
 
 const { frontmatter } = Astro.props;
-const pageTitle = `${frontmatter.title} | Bernardo Santiago Marin`;
-const repositoryLabel = frontmatter.repository?.label ?? 'Repository';
+const project = getProject(frontmatter.projectId);
+const projectDetails = getProjectDetails(frontmatter.projectId);
+const pageTitle = `${project.name} | Bernardo Santiago Marin`;
+const repositoryLabel = projectDetails.repository?.label ?? 'Repository';
 ---
 
-<Layout title={pageTitle} description={frontmatter.description}>
+<Layout title={pageTitle} description={project.description}>
 	<main class="mx-auto w-full max-w-(--layout-max-width) px-5 sm:px-8 lg:px-10">
 		<nav class="pt-8 sm:pt-10" aria-label="Project navigation">
 			<a
@@ -41,41 +34,41 @@ const repositoryLabel = frontmatter.repository?.label ?? 'Repository';
 			<header class="grid gap-10 border-b border-(--color-border) py-16 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:gap-16">
 				<div class="max-w-3xl">
 					<p class="mb-6 font-mono text-xs uppercase tracking-[0.24em] text-(--color-muted)">
-						{frontmatter.period ?? 'Project'}
+						{project.period ?? 'Project'}
 					</p>
 					<h1 class="text-5xl font-extralight leading-none text-(--color-text) sm:text-6xl lg:text-7xl">
-						{frontmatter.title}
+						{project.name}
 					</h1>
 					<p class="mt-7 max-w-2xl text-xl leading-9 text-(--color-muted) sm:text-2xl sm:leading-10">
-						{frontmatter.description}
+						{project.description}
 					</p>
 				</div>
 
 				<aside class="grid content-start gap-7 border-t border-(--color-border) pt-8 lg:border-t-0 lg:pt-0">
 					{
-						frontmatter.role && (
+						projectDetails.role && (
 							<div class="space-y-2">
 								<p class="font-mono text-xs uppercase tracking-[0.22em] text-(--color-muted)">
 									Role
 								</p>
-								<p class="text-lg text-(--color-text)">{frontmatter.role}</p>
+								<p class="text-lg text-(--color-text)">{projectDetails.role}</p>
 							</div>
 						)
 					}
 					{
-						frontmatter.technologies?.length && (
+						project.technologies.length > 0 && (
 							<div class="space-y-4">
 								<p class="font-mono text-xs uppercase tracking-[0.22em] text-(--color-muted)">
 									Stack
 								</p>
-								<BadgeList items={frontmatter.technologies} />
+								<BadgeList items={project.technologies} />
 							</div>
 						)
 					}
 					{
-						frontmatter.repository && (
+						projectDetails.repository && (
 							<a
-								href={frontmatter.repository.href}
+								href={projectDetails.repository.href}
 								class="group inline-flex w-fit items-center gap-3 border-t border-(--color-border) pt-5 text-base text-(--color-text) transition duration-150 hover:border-(--color-border-strong)"
 								target="_blank"
 								rel="noreferrer"
