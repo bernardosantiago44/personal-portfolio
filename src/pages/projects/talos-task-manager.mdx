@@ -23,95 +23,8 @@ import EntityRelationshipModel from '../../assets/talos/EntityRelationshipModel.
 import PipelineArchitecture from '../../assets/talos/PipelineArchitecture.webp'
 import TelegramScreenshots from '../../assets/talos/TelegramScreenshots.webp'
 
-export const architectureItems = [
-  {
-    title: 'API first backend',
-    description:
-      'Spring Boot exposes the core task, user, and collaboration flows through REST endpoints that can support both the web client and the Telegram interface.',
-  },
-  {
-    title: 'React workspace',
-    description:
-      'The frontend keeps task planning, filtering, and team context in a focused interface designed for day-to-day project tracking.',
-  },
-  {
-    title: 'Cloud deployment path',
-    description:
-      'Docker packages the services consistently, while Oracle Autonomous Database stores the relational project and task data.',
-  },
-  {
-    title: 'Monolith layered architecture',
-    description: 'Single deployable application with clear separation of concerns for easy development and deployment.',
-  },
-];
-
-export const decisionItems = [
-  {
-    title: 'Keep collaboration channels lightweight',
-    description:
-      'Telegram is used as a fast interaction layer for reminders and updates instead of forcing every action through the main web app.',
-  },
-  {
-    title: 'Use a relational model for work tracking',
-    description:
-      'Tasks, users, status changes, and team assignments are structured as durable records so future reporting and audit features remain possible.',
-  },
-  {
-    title: 'Separate product workflows from integrations',
-    description:
-      'The bot integration sits outside the core task rules, which keeps the product logic easier to test and extend.',
-  },
-];
-
-export const challengeItems = [
-  {
-    title: 'Keeping bot commands predictable',
-    description:
-      'The command design needed to be short enough for chat while still mapping cleanly to task states and project context.',
-  },
-  {
-    title: 'Coordinating multiple clients',
-    description:
-      'The API has to protect consistency when tasks are updated from both the browser and Telegram.',
-  },
-];
-
-export const stackGroups = [
-  {
-    label: 'Backend',
-    items: ['Spring Boot', 'Java', 'REST APIs', 'Oracle Autonomous Database'],
-  },
-  {
-    label: 'Frontend',
-    items: ['React', 'TypeScript', 'Responsive UI'],
-  },
-  {
-    label: 'Operations',
-    items: ['Docker', 'Oracle Cloud', 'Environment configuration'],
-  },
-  {
-    label: 'Integrations',
-    items: ['Telegram API', 'Bot commands', 'Notifications'],
-  },
-];
-
-export const resultItems = [
-  {
-    value: 'Design',
-    label: 'User interfaces',
-    description: 'A web workspace and Telegram bot both connect to the same product workflow.',
-  },
-  {
-    value: 'Backend',
-    label: 'Shared API',
-    description: 'One backend owns the task rules and keeps clients consistent.',
-  },
-  {
-    value: 'Cloud',
-    label: 'Deployment ready',
-    description: 'The app is structured for repeatable container-based deployment.',
-  },
-];
+import { getProjectDetails } from '../../data/portfolio.ts';
+export const talosDetails = getProjectDetails('talos-task-manager');
 
 export const galleryItems = [
   {
@@ -143,23 +56,23 @@ export const galleryItems = [
 </ProjectSection>
 
 <ProjectSection title="Architecture" eyebrow="02">
-  <ProjectList items={architectureItems} />
+  <ProjectList items={talosDetails.architectureItems} />
 </ProjectSection>
 
 <ProjectSection title="Important decisions" eyebrow="03">
-  <ProjectList items={decisionItems} />
+  <ProjectList items={talosDetails.importantDecisions} />
 </ProjectSection>
 
 <ProjectSection title="Challenges" eyebrow="04">
-  <ProjectList items={challengeItems} />
+  <ProjectList items={talosDetails.challenges} />
 </ProjectSection>
 
 <ProjectSection title="Tech stack" eyebrow="05">
-  <ProjectTechStack groups={stackGroups} />
+  <ProjectTechStack groups={talosDetails.stack} />
 </ProjectSection>
 
 <ProjectSection title="Results" eyebrow="06">
-  <ProjectResults items={resultItems} />
+  <ProjectResults items={talosDetails.results} />
 </ProjectSection>
 
 <ProjectSection title="Gallery" eyebrow="07">

@@ -1,10 +1,10 @@
 ---
 import ProjectCard from './ProjectCard.astro';
 import SectionHeader from './SectionHeader.astro';
-import type { ProjectEntry } from '../../data/portfolio';
+import type { Project } from '../../data/portfolio';
 
 type Props = {
-  projects: ProjectEntry[];
+  projects: Project[];
 };
 
 const { projects } = Astro.props;

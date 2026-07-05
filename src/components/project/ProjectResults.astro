@@ -1,12 +1,8 @@
 ---
-type ResultItem = {
-	value: string;
-	label: string;
-	description?: string;
-};
+import type { ProjectResultItem } from "../../data/portfolio.ts";
 
 type Props = {
-	items: ResultItem[];
+	items: ProjectResultItem[];
 };
 
 const { items } = Astro.props;

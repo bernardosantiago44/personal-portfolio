@@ -17,91 +17,9 @@ import ProjectResults from '../../components/project/ProjectResults.astro';
 import ProjectSection from '../../components/project/ProjectSection.astro';
 import ProjectTechStack from '../../components/project/ProjectTechStack.astro';
 
-export const architectureItems = [
-  {
-    title: 'Raspberry Pi control layer',
-    description:
-      'The prototype runs camera capture, detection logic, and hardware signals close to the vehicle so safety reactions do not depend on the dashboard.',
-  },
-  {
-    title: 'Computer vision pipeline',
-    description:
-      'OpenCV processes frames to identify stop signs and relevant obstacles in real time for autonomous driving behavior.',
-  },
-  {
-    title: 'iOS telemetry dashboard',
-    description:
-      'SwiftUI presents vehicle state, detection feedback, and live telemetry in a compact mobile dashboard connected through Firebase.',
-  },
-];
+import { getProjectDetails } from '../../data/portfolio.ts';
 
-export const decisionItems = [
-  {
-    title: 'Run detection on-device',
-    description:
-      'Keeping recognition near the camera reduced latency and made the prototype more resilient when network conditions changed.',
-  },
-  {
-    title: 'Separate telemetry from movement control',
-    description:
-      'The mobile app observes and visualizes state, while the Raspberry Pi keeps direct responsibility for vehicle behavior.',
-  },
-  {
-    title: 'Use Firebase for fast synchronization',
-    description:
-      'Firebase provided a practical path for moving prototype telemetry into the dashboard without building custom realtime infrastructure.',
-  },
-];
-
-export const challengeItems = [
-  {
-    title: 'Balancing detection accuracy and frame rate',
-    description:
-      'Image processing had to remain responsive on constrained hardware while still detecting signs and obstacles reliably.',
-  },
-  {
-    title: 'Designing clear telemetry',
-    description:
-      'The dashboard needed to surface only the signals that helped test and debug the prototype during runs.',
-  },
-];
-
-export const stackGroups = [
-  {
-    label: 'Hardware',
-    items: ['Raspberry Pi', 'Camera module', 'Vehicle prototype'],
-  },
-  {
-    label: 'Vision',
-    items: ['OpenCV', 'Frame processing', 'Object detection'],
-  },
-  {
-    label: 'Mobile',
-    items: ['SwiftUI', 'iOS dashboard', 'Live telemetry'],
-  },
-  {
-    label: 'Data',
-    items: ['Firebase', 'Realtime updates', 'Prototype state'],
-  },
-];
-
-export const resultItems = [
-  {
-    value: 'Real time',
-    label: 'Detection loop',
-    description: 'The prototype reacted to visual input while the vehicle was running.',
-  },
-  {
-    value: 'iOS',
-    label: 'Telemetry dashboard',
-    description: 'A mobile interface made testing and debugging easier during prototype sessions.',
-  },
-  {
-    value: 'IoT',
-    label: 'Integrated system',
-    description: 'Hardware, vision, cloud data, and mobile UI worked as one prototype.',
-  },
-];
+export const objectDetectionSystemDetails = getProjectDetails('object-detection-system');
 
 <ProjectSection title="Problem" eyebrow="01">
   The project explored how a small vehicle prototype could understand its surroundings and expose
@@ -110,21 +28,21 @@ export const resultItems = [
 </ProjectSection>
 
 <ProjectSection title="Architecture" eyebrow="02">
-  <ProjectList items={architectureItems} />
+  <ProjectList items={objectDetectionSystemDetails.architectureItems} />
 </ProjectSection>
 
 <ProjectSection title="Important decisions" eyebrow="03">
-  <ProjectList items={decisionItems} />
+  <ProjectList items={objectDetectionSystemDetails.importantDecisions} />
 </ProjectSection>
 
 <ProjectSection title="Challenges" eyebrow="04">
-  <ProjectList items={challengeItems} />
+  <ProjectList items={objectDetectionSystemDetails.challenges} />
 </ProjectSection>
 
 <ProjectSection title="Tech stack" eyebrow="05">
-  <ProjectTechStack groups={stackGroups} />
+  <ProjectTechStack groups={objectDetectionSystemDetails.stack} />
 </ProjectSection>
 
 <ProjectSection title="Results" eyebrow="06">
-  <ProjectResults items={resultItems} />
+  <ProjectResults items={objectDetectionSystemDetails.results} />
 </ProjectSection>

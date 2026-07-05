@@ -1,13 +1,9 @@
 ---
 import BadgeList from '../portfolio/BadgeList.astro';
-
-type StackGroup = {
-	label: string;
-	items: string[];
-};
+import type { ProjectStackGroup } from "../../data/portfolio.ts";
 
 type Props = {
-	groups: StackGroup[];
+	groups: ProjectStackGroup[];
 };
 
 const { groups } = Astro.props;
