@@ -114,6 +114,25 @@ export const experience: ExperienceEntry[] = [
 
 export const projects: Project[] = [
   {
+    id: 'crypto-alerts',
+    name: 'Crypto Alerts',
+    period: 'Jun. 2026 - Present',
+    description:
+        'A web-based crypto portfolio tracking tool with market data integration, custom price alerts, Telegram notifications, and a React dashboard for portfolio analysis.',
+    technologies: ['React', 'Prisma', 'NestJS', 'PostgreSQL', 'Node Cron', 'Open API', 'CI/CD', 'Render'],
+    href: '/projects/crypto-alerts',
+    details: {
+      role: 'Fullstack Developer',
+      architectureItems: [
+        {title: 'React Frontend', description: 'Solid authentication'}
+      ],
+      importantDecisions: [],
+      challenges: [],
+      stack: [],
+      results: []
+    }
+  },
+  {
     id: 'talos-task-manager',
     name: 'Talos Task Manager',
     period: 'Feb. 2026 - Jun. 2026',
@@ -303,14 +322,6 @@ export const projects: Project[] = [
         },
       ],
     },
-  },
-  {
-    id: 'crypto-alerts',
-    name: 'Crypto Alerts',
-    period: 'Jun. 2026',
-    description:
-      'A web-based crypto portfolio tracking tool with market data integration, custom price alerts, Telegram notifications, and a React dashboard for portfolio analysis.',
-    technologies: ['React', 'Prisma', 'NestJS', 'PostgreSQL', 'Node Cron', 'Open API', 'CI/CD', 'Render'],
   },
 ];
 

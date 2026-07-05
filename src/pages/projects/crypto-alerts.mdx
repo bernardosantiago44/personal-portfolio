@@ -1,0 +1,28 @@
+---
+layout: ../../layouts/ProjectLayout.astro
+projectId: crypto-alerts
+---
+
+import ProjectGallery from '../../components/project/ProjectGallery.astro';
+import ProjectList from '../../components/project/ProjectList.astro';
+import ProjectResults from '../../components/project/ProjectResults.astro';
+import ProjectSection from '../../components/project/ProjectSection.astro';
+import ProjectTechStack from '../../components/project/ProjectTechStack.astro';
+
+import { getProjectDetails } from '../../data/portfolio.ts';
+export const cryptoDetails = getProjectDetails('crypto-alerts');
+
+<ProjectSection title="Problem" eyebrow="01">
+  Small crypto investors often **track their holdings manually** across spreadsheets, exchanges, and price-tracking apps.
+  This creates several issues:
+  1. Portfolio data is **fragmented**.
+  1. Price movements are **easy to miss**.
+  1. Alerts are usually **limited** to exchange-specific assets.
+  1. Users need a **lightweight tool** focused on their own holdings, not a full trading platform.
+
+  The goal of this project is to provide a focused portfolio tracker where users can register their crypto holdings, analyze their portfolio, and receive automatic notifications when relevant market conditions occur.
+</ProjectSection>
+
+<ProjectSection title="Architecture" eyebrow="02">
+  <ProjectList items={cryptoDetails.architectureItems} />
+</ProjectSection>
