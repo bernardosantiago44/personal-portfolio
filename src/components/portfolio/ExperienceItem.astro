@@ -14,7 +14,7 @@ const { entry } = Astro.props;
     <p class="font-mono text-xs uppercase tracking-[0.18em] text-(--color-muted)">
       {entry.period}
     </p>
-    <p class="text-sm text-(--color-muted)">{entry.location}</p>
+    {entry.location && <p class="text-sm text-(--color-muted)">{entry.location}</p>}
   </div>
 
   <div class="space-y-4">
