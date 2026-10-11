@@ -1,0 +1,23 @@
+---
+import ExperienceItem from './ExperienceItem.astro';
+import SectionHeader from './SectionHeader.astro';
+import type { ExperienceEntry } from '../../data/portfolio';
+
+type Props = {
+  entries: ExperienceEntry[];
+};
+
+const { entries } = Astro.props;
+---
+
+<section class="pb-20 sm:pb-24" id="leadership" aria-labelledby="leadership-title">
+  <SectionHeader
+    eyebrow="Leadership"
+    title="Bringing people together for a shared purpose."
+    titleId="leadership-title"
+    description="Team leadership and volunteer initiatives that turn coordinated effort into community impact."
+  />
+  <div>
+    {entries.map((entry) => <ExperienceItem entry={entry} />)}
+  </div>
+</section>
