@@ -2,9 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import ContactSection from '../components/portfolio/ContactSection.astro';
 import ExperienceSection from '../components/portfolio/ExperienceSection.astro';
+import LeadershipSection from '../components/portfolio/LeadershipSection.astro';
 import HeroSection from '../components/portfolio/HeroSection.astro';
 import ProjectsSection from '../components/portfolio/ProjectsSection.astro';
-import { contact, experience, profile, projects, techStack } from '../data/portfolio';
+import { contact, experience, leadership, profile, projects, techStack } from '../data/portfolio';
 ---
 
 <Layout>
@@ -12,6 +13,7 @@ import { contact, experience, profile, projects, techStack } from '../data/portf
 		<HeroSection profile={profile} techStack={techStack} primaryContact={contact[0]} />
 		<ExperienceSection entries={experience} />
 		<ProjectsSection projects={projects} />
+		<LeadershipSection entries={leadership} />
 		<ContactSection contact={contact} />
 	</main>
 </Layout>
