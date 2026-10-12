@@ -10,6 +10,9 @@ import { contact, experience, leadership, profile, projects, techStack } from '.
 
 <Layout>
 	<main class="mx-auto w-full max-w-(--layout-max-width) px-5 sm:px-8 lg:px-10">
+		<nav aria-label="Site navigation" class="flex justify-end pt-8 text-sm text-(--color-muted)">
+			<a href="/blog/" class="inline-flex min-h-11 items-center hover:text-(--color-text) hover:underline">Blog <span class="ml-2" aria-hidden="true">↗</span></a>
+		</nav>
 		<HeroSection profile={profile} techStack={techStack} primaryContact={contact[0]} />
 		<ExperienceSection entries={experience} />
 		<ProjectsSection projects={projects} />

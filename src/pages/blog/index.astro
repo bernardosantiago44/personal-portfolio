@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogHeader from '../../components/blog/BlogHeader.astro';
+import BlogPostCard from '../../components/blog/BlogPostCard.astro';
+import { getPublishedPosts } from '../../lib/blog';
+import '../../styles/blog.css';
+const posts = await getPublishedPosts();
+---
+<Layout title="Blog | Bernardo Santiago Marin" description="Notes on backend engineering, building software, and lessons learned along the way.">
+  <a class="blog-skip-link" href="#blog-main">Skip to content</a>
+  <main id="blog-main" class="blog-shell" tabindex="-1">
+    <BlogHeader />
+    <header class="blog-index-header">
+      <p class="blog-eyebrow">Notes & ideas</p>
+      <h1>Blog</h1>
+      <p>On backend engineering, building software, and lessons learned along the way.</p>
+    </header>
+    {posts.length > 0 ? (
+      <ul class="blog-post-list" aria-label="Published articles">
+        {posts.map((post) => <BlogPostCard post={post} />)}
+      </ul>
+    ) : (
+      <section class="blog-empty" aria-labelledby="empty-title">
+        <h2 id="empty-title">A space for what comes next.</h2>
+        <p>New articles will appear here as I share what I’m learning and building.</p>
+        <a href="/#projects">Explore my projects <span aria-hidden="true">→</span></a>
+      </section>
+    )}
+  </main>
+</Layout>
