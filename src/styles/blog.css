@@ -84,4 +84,3 @@ html[data-theme="dark"] .blog-prose .astro-code, html[data-theme="dark"] .blog-p
 }
 /* Keep reading and navigation free of the homepage's decorative edge fades. */
 body:has(.blog-shell) .scroll-fade { display: none; }
-.blog-prose { max-width: 68ch; margin-inline: auto; }
