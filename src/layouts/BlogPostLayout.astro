@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import Layout from './Layout.astro';
+import BlogTags from '../components/blog/BlogTags.astro';
+import { formatDate, postUrl, type BlogPost } from '../lib/blog';
+import '../styles/blog.css';
+
+type Props = { post: BlogPost; newer?: BlogPost; older?: BlogPost };
+const { post, newer, older } = Astro.props;
+const { data } = post;
+---
+<Layout
+  title={`${data.title} | Bernardo Santiago Marin`}
+  description={data.description}
+  type="article"
+  image={data.image?.src}
+  imageAlt={data.imageAlt}
+  publishedAt={data.publishedAt}
+  updatedAt={data.updatedAt}
+  tags={data.tags}
+>
+  <a class="blog-skip-link" href="#article-content">Skip to article</a>
+  <main class="blog-shell blog-reading-shell">
+    <nav class="blog-navigation" aria-label="Article navigation">
+      <a href="/blog/">← All articles</a>
+      <a href="/">Portfolio</a>
+    </nav>
+    <article aria-labelledby="article-title">
+      <header class="blog-article-header">
+        <div class="blog-dates">
+          <span>Published <time datetime={data.publishedAt.toISOString()}>{formatDate(data.publishedAt)}</time></span>
+          {data.updatedAt && <span>Updated <time datetime={data.updatedAt.toISOString()}>{formatDate(data.updatedAt)}</time></span>}
+        </div>
+        <h1 id="article-title">{data.title}</h1>
+        <p>{data.description}</p>
+        <BlogTags tags={data.tags} />
+        {data.image && <Image src={data.image} alt={data.imageAlt!} class="blog-cover" loading="eager" width={Math.min(data.image.width, 1200)} widths={[480, 768, 1200].filter((width) => width <= data.image!.width)} sizes="(max-width: 768px) 100vw, 768px" />}
+      </header>
+      <div id="article-content" class="blog-prose" tabindex="-1"><slot /></div>
+    </article>
+    <nav class="blog-article-footer" aria-label="More articles">
+      <a href="/blog/">← All articles</a>
+      {(newer || older) && <div class="blog-neighbors">
+        {newer && <a href={postUrl(newer)}><span class="blog-eyebrow">Newer article</span>{newer.data.title}</a>}
+        {older && <a href={postUrl(older)}><span class="blog-eyebrow">Older article</span>{older.data.title}</a>}
+      </div>}
+    </nav>
+  </main>
+</Layout>
