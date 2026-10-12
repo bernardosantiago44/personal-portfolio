@@ -1,0 +1,9 @@
+---
+type Props = { tags: string[] };
+const { tags } = Astro.props;
+---
+{tags.length > 0 && (
+  <ul class="blog-tags" aria-label="Article tags">
+    {tags.map((tag) => <li>{tag}</li>)}
+  </ul>
+)}

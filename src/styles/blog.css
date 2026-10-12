@@ -1,0 +1,87 @@
+/* Editorial styles share the portfolio's palette and system typography. */
+.blog-shell {
+  width: min(100%, 60rem);
+  margin-inline: auto;
+  padding: 2rem clamp(1.25rem, 5vw, 3rem) 8rem;
+  overflow-wrap: anywhere;
+}
+.blog-reading-shell { max-width: 54rem; }
+.blog-navigation { display: flex; justify-content: space-between; gap: 1rem; }
+.blog-navigation a, .blog-article-footer > a, .blog-empty > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  gap: .5rem;
+  color: var(--color-muted);
+  text-underline-offset: .3em;
+  transition: color 150ms ease;
+}
+.blog-navigation a:hover, .blog-article-footer a:hover, .blog-empty > a:hover { color: var(--color-text); text-decoration: underline; }
+.blog-index-header { padding-block: clamp(4rem, 10vw, 7rem) 3.5rem; }
+.blog-eyebrow, .blog-date {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: .75rem;
+  line-height: 1.7;
+  letter-spacing: .12em;
+  color: var(--color-muted);
+}
+.blog-eyebrow { text-transform: uppercase; }
+.blog-index-header h1 { font-size: clamp(3.5rem, 10vw, 6rem); font-weight: 200; line-height: 1.1; margin: 1rem 0 1.5rem; }
+.blog-index-header > p:last-child, .blog-article-header > p { max-width: 40rem; font-size: clamp(1.125rem, 3vw, 1.35rem); line-height: 1.8; color: var(--color-muted); }
+.blog-post-list { margin: 0; padding: 0; list-style: none; }
+.blog-post-preview { border-top: 1px solid var(--color-border); padding-block: 2rem 2.5rem; }
+.blog-post-preview h2 { margin: .8rem 0; font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 500; line-height: 1.4; }
+.blog-post-preview h2 a { display: inline-block; padding-block: .25rem; color: var(--color-text); text-decoration: none; }
+.blog-post-preview h2 a:hover { text-decoration: underline; text-underline-offset: .2em; }
+.blog-post-preview h2 span { color: var(--color-muted); }
+.blog-post-preview p { max-width: 43rem; color: var(--color-muted); line-height: 1.8; }
+.blog-tags { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; margin: 1.25rem 0 0; padding: 0; }
+.blog-tags li { border: 1px solid var(--color-border); border-radius: 999px; padding: .25rem .75rem; font-size: .75rem; line-height: 1.5; color: var(--color-muted); }
+.blog-empty { border-top: 1px solid var(--color-border); padding-block: 2.5rem; }
+.blog-empty h2 { font-size: 1.5rem; font-weight: 400; }
+.blog-empty p { color: var(--color-muted); line-height: 1.8; margin-block: 1rem; }
+.blog-article-header { padding-block: 4rem 2.5rem; border-bottom: 1px solid var(--color-border); }
+.blog-dates { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; color: var(--color-muted); font-size: .8rem; line-height: 1.8; }
+.blog-article-header h1 { margin: 1.5rem 0; font-weight: 300; font-size: clamp(2.25rem, 6vw, 3.5rem); line-height: 1.15; letter-spacing: -.025em; text-wrap: balance; }
+.blog-cover { display: block; width: 100%; height: auto; margin-top: 2.5rem; border-radius: .4rem; }
+.blog-prose { padding-block: 2.5rem; font-size: 1.0625rem; line-height: 1.85; color: var(--color-muted); }
+.blog-prose > * + * { margin-top: 1.5rem; }
+.blog-prose h2, .blog-prose h3, .blog-prose h4, .blog-prose h5, .blog-prose h6 { color: var(--color-text); font-weight: 500; line-height: 1.35; margin-top: 2.75rem; margin-bottom: 1rem; scroll-margin-top: 6rem; }
+.blog-prose h2 { font-size: 1.8rem; }
+.blog-prose h3 { font-size: 1.4rem; }
+.blog-prose h4 { font-size: 1.2rem; }
+.blog-prose strong { color: var(--color-text); font-weight: 600; }
+.blog-prose a { color: var(--color-text); text-decoration: underline; text-underline-offset: .2em; }
+.blog-prose a:hover { text-decoration-thickness: 2px; }
+.blog-prose ul, .blog-prose ol { padding-left: 1.5rem; }
+.blog-prose ul { list-style: disc; }
+.blog-prose ol { list-style: decimal; }
+.blog-prose li + li { margin-top: .5rem; }
+.blog-prose li > ul, .blog-prose li > ol { margin-block: .5rem; }
+.blog-prose blockquote { border-left: 2px solid var(--color-border-strong); padding-left: 1.5rem; font-style: italic; }
+.blog-prose hr { border: 0; border-top: 1px solid var(--color-border); margin-block: 2.5rem; }
+.blog-prose img, .blog-prose video { display: block; max-width: 100%; height: auto; border-radius: .4rem; margin-inline: auto; }
+.blog-prose figure { margin-inline: 0; }
+.blog-prose figcaption { margin-top: .75rem; text-align: center; font-size: .875rem; }
+.blog-prose :not(pre) > code { background: var(--color-inline-code); border: 1px solid var(--color-border); border-radius: .25rem; padding: .1rem .3rem; font-size: .875em; color: var(--color-text); }
+.blog-prose pre { max-width: 100%; overflow-x: auto; padding: 1.25rem; border: 1px solid var(--color-border); border-radius: .4rem; font-size: .875rem; line-height: 1.75; tab-size: 2; }
+.blog-prose pre code { white-space: pre; }
+html[data-theme="dark"] .blog-prose .astro-code, html[data-theme="dark"] .blog-prose .astro-code span { color: var(--shiki-dark) !important; background-color: var(--shiki-dark-bg) !important; }
+.blog-table-scroll { max-width: 100%; overflow-x: auto; margin-block: 1.5rem; }
+.blog-prose table { width: 100%; border-collapse: collapse; text-align: left; font-size: .9375rem; }
+.blog-prose th, .blog-prose td { padding: .75rem 1rem; border: 1px solid var(--color-border-strong); min-width: 8rem; vertical-align: top; }
+.blog-prose th { color: var(--color-text); font-weight: 600; background: var(--color-surface); }
+.blog-prose input[type="checkbox"] { margin-right: .5rem; }
+.blog-article-footer { border-top: 1px solid var(--color-border); padding-top: 1.5rem; }
+.blog-neighbors { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 2rem; margin-top: 2rem; }
+.blog-neighbors a { color: var(--color-text); line-height: 1.6; text-underline-offset: .2em; }
+.blog-neighbors .blog-eyebrow { display: block; margin-bottom: .5rem; }
+.blog-skip-link { position: fixed; top: 1rem; left: 1rem; z-index: 200; padding: 1rem; background: var(--color-background); color: var(--color-text); transform: translateY(-200%); }
+.blog-skip-link:focus { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .blog-shell *, .theme-toggle, .theme-toggle__icon { transition: none; }
+}
+/* Keep reading and navigation free of the homepage's decorative edge fades. */
+body:has(.blog-shell) .scroll-fade { display: none; }
+.blog-prose { max-width: 68ch; margin-inline: auto; }

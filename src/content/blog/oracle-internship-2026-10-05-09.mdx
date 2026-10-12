@@ -1,0 +1,71 @@
+---
+title: 'Oracle Internship: October 5–9, 2026'
+description: 'A quieter week: closing a ticket, checking in with my mentees, building my Astro portfolio, and adding a Lego car to my desk.'
+publishedAt: 2026-10-11
+tags: ['Oracle Internship', 'Mentorship', 'Astro']
+draft: false
+---
+import { Image } from 'astro:assets';
+import deskView from '../../assets/blog/oracle-internship-2026-10-05-09/desk_view.jpeg';
+import legoMercedesCloseup from '../../assets/blog/oracle-internship-2026-10-05-09/lego_mercedes_closeup.jpeg';
+
+This was a quieter week. Workwise, I finally closed another ticket after an unfortunate series of events, most of which were outside my control. I also checked in with my mentees on their technical skills, worked with them on their CVs, and got a new addition to my desk.
+
+## Settling in with our new manager
+
+My team and I have been getting along well with our new manager. He’s very nice to work with, although he’s understandably busy managing two teams at the same time.
+
+He’s still getting familiar with what our team does. That can make things a little tricky when I’m also learning, but he’s supportive and helps us as much as he can.
+
+## Checking in with my mentees
+
+I’ve been following up with my mentees, and they’ve been improving. Alongside their technical progress, we’ve also been working on their CVs.
+
+We now have a talk scheduled about systems, networks, and security. It wasn’t originally on the schedule, but several mentees showed interest, so we managed to organize one. I’m planning to join as well; it’s a topic I know I can learn more about.
+
+## Building my own corner of the web
+
+This week, I also got my personal website running. For now, it presents my CV as a webpage. My next step is to add these blog entries. Hopefully, it’ll be hosted online next week, and I can start migrating my previous entries there.
+
+I’m building it with Astro, which feels like a great fit for a site focused on static content. I like its fast loading times and the flexibility to work with components from other frameworks.
+
+What I’m most excited about is its support for `.mdx` files. I can write in Markdown, bring in components when they’re useful, and use a shared layout to keep every entry looking consistent. That makes the idea of maintaining my own blog feel much more manageable.
+
+I can even add code blocks:
+```js
+const a = 5;
+const b = 10;
+console.log(a+b); // 15
+```
+
+I’m excited to share it once it’s ready.
+
+## A new addition to my desk
+
+Last week, I built a new Lego car, which is now the latest addition to my desk. I really **should** stop buying Lego.
+
+{/* To add another photo: import it above, then reuse a figure with Image and a caption. */}
+
+<figure>
+  <Image
+    src={deskView}
+    alt="My desk with two monitors, a laptop, and Lego Formula 1 cars on either side."
+    width={1200}
+    widths={[480, 768, 1200]}
+    sizes="(max-width: 768px) calc(100vw - 2.5rem), 680px"
+    loading="lazy"
+  />
+  <figcaption>My desk setup, with a little extra motivation on either side.</figcaption>
+</figure>
+
+<figure>
+  <Image
+    src={legoMercedesCloseup}
+    alt="Close-up of a black and turquoise Lego Mercedes Formula 1 car with a small white plush toy in the cockpit."
+    width={1200}
+    widths={[480, 768, 1200]}
+    sizes="(max-width: 768px) calc(100vw - 2.5rem), 680px"
+    loading="lazy"
+  />
+  <figcaption>The new Lego Mercedes, complete with its own driver.</figcaption>
+</figure>
