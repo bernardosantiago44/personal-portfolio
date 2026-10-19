@@ -26,6 +26,8 @@
   color: var(--color-muted);
 }
 .blog-eyebrow { text-transform: uppercase; }
+.blog-date-group { display: inline-flex; align-items: center; gap: .65rem; }
+.blog-week-number { display: inline-block; border: 1px solid var(--color-border); border-radius: 999px; padding: .12rem .6rem; color: var(--color-muted); font-size: .7rem; line-height: 1.5; letter-spacing: .04em; white-space: nowrap; }
 .blog-index-header h1 { font-size: clamp(3.5rem, 10vw, 6rem); font-weight: 200; line-height: 1.1; margin: 1rem 0 1.5rem; }
 .blog-index-header > p:last-child, .blog-article-header > p { max-width: 40rem; font-size: clamp(1.125rem, 3vw, 1.35rem); line-height: 1.8; color: var(--color-muted); }
 .blog-post-list { margin: 0; padding: 0; list-style: none; }

@@ -5,7 +5,10 @@ const { post } = Astro.props as { post: BlogPost };
 ---
 <li class="blog-post-preview">
   <article>
-    <time class="blog-date" datetime={post.data.publishedAt.toISOString()}>{formatDate(post.data.publishedAt)}</time>
+    <div class="blog-date-group">
+      <time class="blog-date" datetime={post.data.publishedAt.toISOString()}>{formatDate(post.data.publishedAt)}</time>
+      {post.data.weekNumber && <span class="blog-week-number">Week {post.data.weekNumber}</span>}
+    </div>
     <h2><a href={postUrl(post)}>{post.data.title}<span aria-hidden="true"> ↗</span></a></h2>
     <p>{post.data.description}</p>
     <BlogTags tags={post.data.tags} />
