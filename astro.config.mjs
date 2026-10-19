@@ -16,6 +16,9 @@ export default defineConfig({
     shikiConfig: { themes: { light: 'github-light', dark: 'github-dark' } },
   },
   vite: {
+    optimizeDeps: {
+      include: ['astro/app/manifest'],
+    },
     plugins: [tailwindcss()]
   },
   adapter: cloudflare({ imageService: 'compile' }),

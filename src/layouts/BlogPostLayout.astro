@@ -28,7 +28,7 @@ const { data } = post;
     <article aria-labelledby="article-title">
       <header class="blog-article-header">
         <div class="blog-dates">
-          <span>Published <time datetime={data.publishedAt.toISOString()}>{formatDate(data.publishedAt)}</time></span>
+          <span class="blog-date-group">Published <time datetime={data.publishedAt.toISOString()}>{formatDate(data.publishedAt)}</time>{data.weekNumber && <span class="blog-week-number">Week {data.weekNumber}</span>}</span>
           {data.updatedAt && <span>Updated <time datetime={data.updatedAt.toISOString()}>{formatDate(data.updatedAt)}</time></span>}
         </div>
         <h1 id="article-title">{data.title}</h1>
